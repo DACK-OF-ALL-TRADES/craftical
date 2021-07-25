@@ -1,3 +1,22 @@
+![Craftical](https://user-images.githubusercontent.com/75903418/126904616-abf9d0a5-8a68-4fd9-aa55-be0723d983e3.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1 align = "center">Craftical</h1>
  <h3 align = "center">E-commerce platform</h3>
 
