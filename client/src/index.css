@@ -39,6 +39,8 @@ body {
   padding: 30rem 0;
 }
 
+/* footer................................................... */
+
 .footer {
   display: flex;
   flex-flow: row wrap;
