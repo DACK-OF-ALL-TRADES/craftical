@@ -7,6 +7,7 @@ const Search = () => {
     <div>
       <Nav />
       Search Page
+      <div className="search-container"></div>
       <Footer />
     </div>
   );

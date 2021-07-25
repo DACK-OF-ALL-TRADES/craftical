@@ -1,4 +1,4 @@
-/* a */
+/* root................................................... */
 *,
 *:before,
 *:after {
@@ -10,9 +10,11 @@
   margin: 0;
 }
 
-html {
-  font-size: 100%;
+:root {
+  --craft: #10d48e;
 }
+
+/* *................................................... */
 
 body {
   font-family: acumin-pro, system-ui, sans-serif;
@@ -26,7 +28,15 @@ body {
     rgb(233, 233, 233)
   );
   align-items: start;
-  min-height: 100vh;
+  height: 100%;
+}
+
+/* home................................................... */
+
+.home-container,
+.profile-container,
+.search-container {
+  padding: 30rem 0;
 }
 
 .footer {
@@ -36,9 +46,15 @@ body {
   color: #dddddd;
   background-color: #1d2622;
   border-top: 1px solid #e5e5e5;
-  position: absolute;
+  clear: both;
   width: 100%;
-  bottom: 0%;
+  position: absolute;
+}
+
+.footer__logo:hover,
+* .footer a:hover {
+  color: var(--craft) !important;
+  transition: 0.4s ease-in-out;
 }
 
 .footer > * {
@@ -114,6 +130,10 @@ body {
 .nav__ul a {
   color: #c0c0c0;
 }
+
+/* .nav__ul a:hover {
+  color: #1d2622;
+} */
 
 .nav__ul--extra {
   column-count: 2;

@@ -7,6 +7,7 @@ const Profile = () => {
     <div>
       <Nav />
       Profile Page
+      <div className="profile-container"></div>
       <Footer />
     </div>
   );
