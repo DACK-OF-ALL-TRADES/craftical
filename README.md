@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/github/contributors/DACK-OF-ALL-TRADES/craftical?color=yellow&label=Contributors&logo=git&logoColor=yellow">
   <img src="https://img.shields.io/github/languages/count/DACK-OF-ALL-TRADES/craftical?color=green&label=Languages&logo=github&logoColor=green">
   <img src="https://img.shields.io/github/languages/top/DACK-OF-ALL-TRADES/craftical?color=red&label=HTML&logo=HTML5&logoColor=5">
-  <img src="https://img.shields.io/github/repo-size/DACK-OF-ALL-TRADES/craftical?color=cyan&label=Repo%20Size&logo=github&logoColor=cyan">
+  <img src="https://img.shields.io/github/repo-size/DACK-OF-ALL-TRADES/craftical?color=purple&label=Repo%20Size&logo=github&logoColor=purple">
 </p>
 
  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://craftical.herokuapp.com/)
