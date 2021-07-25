@@ -2,14 +2,14 @@ import React from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Search = () => {
   return (
-    <div className="container">
+    <div>
       <Nav />
-      <h1>Homepage</h1>
+      Search Page
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default Search;
