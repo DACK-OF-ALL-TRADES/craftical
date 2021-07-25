@@ -1,5 +1,5 @@
 <h1 align = "center">Craftical</h1>
- <h3 align = "center">E-commerce platform</h3>
+ <h3 align = "center">Crafting Platform</h3>
 
 <p align = "center">
   <img src="https://img.shields.io/npm/v/npm?color=red&logo=npm"/>
