@@ -75,10 +75,6 @@ export default function Carousel(props) {
   return (
     <div className={classes.mainRoot}>
       <div className={classes.root}>
-        <div className={classes.title}>
-          <p className={classes.header}>{props.name}</p>
-        </div>
-
         <div className={classes.imgContainer}>
           <span className={classes.imgMedia1}>
             <Link to="/#">
@@ -116,6 +112,9 @@ export default function Carousel(props) {
               />
             </Link>
           </span>
+        </div>
+        <div className={classes.title}>
+          <p className={classes.header}>{props.name}</p>
         </div>
 
         <MobileStepper
