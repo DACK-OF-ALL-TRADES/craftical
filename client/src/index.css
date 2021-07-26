@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Literata&family=Pacifico&display=swap");
+
 /* root................................................... */
 *,
 *:before,
@@ -15,21 +17,20 @@
   --craft: #10d48e;
   --craft-dark: #1d2622;
   --craft-light: #d5d6d6;
+  --craft-font: "Pacifico", cursive;
+  --craft-font2: "Fredericka the Great", cursive;
+  --craft-font3: "Literata", serif;
 }
 
 /* *................................................... */
 
 body {
-  font-family: acumin-pro, system-ui, sans-serif;
+  font-family: var(--craft-font3);
   margin: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-size: 14px;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(252, 252, 252),
-    rgb(233, 233, 233)
-  );
+  background-color: #e1e1e1;
   align-items: start;
   height: 100%;
 }
@@ -45,23 +46,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
   flex-direction: column;
 }
 
 .home-header h1 {
-  font-size: 4rem;
+  font-size: 6rem;
+  font-family: var(--craft-font);
+  color: var(--craft);
+  text-shadow: 2px 2px 0 var(--craft-dark);
 }
 
 .carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0;
+  margin: 2rem;
 }
 
 .carousel-container * img:hover {
   filter: brightness(50%);
+}
+
+.home-top-categories,
+.home-top-users,
+.home-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* footer................................................... */
@@ -111,7 +122,7 @@ body {
 }
 
 .nav__title {
-  font-weight: 400;
+  font-weight: bolder;
   font-size: 15px;
 }
 
@@ -177,7 +188,12 @@ body {
   color: #c0c0c0;
 }
 
+.legal p span {
+  font-family: var(--craft-font);
+}
+
 .legal__links {
+  font-family: var(--craft-font2);
   display: flex;
   align-items: center;
 }

@@ -1,12 +1,15 @@
 import React from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Carousel from "../components/Carousel.js";
+import Carousel from "../components/Carousel/index.js";
+import TopCategories from "../components/TopCategories";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Share from "@material-ui/icons/Share";
-import CloudQueue from "@material-ui/icons/CloudQueue";
+import { makeStyles } from "@material-ui/core/styles";
+import img1 from "../assets/art-transparent.png";
+import img2 from "../assets/fun-transparent.png";
+import CraftedItems from "../components/CraftedItems";
+//
 //
 
 const useStyles = makeStyles((theme) => ({
@@ -20,17 +23,20 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     backgroundColor: "#eee",
     fontSize: "120%",
-    minHeight: "20rem",
+    minHeight: "33rem",
     margin: "1rem",
   },
   paperh3: {
     color: "black",
     margin: "0.5rem 0",
     fontSize: "200%",
+    fontFamily: "Fredericka the Great, cursive",
   },
   paperp: {
     lineHeight: "150%",
-    letterSpacing: "0.8px",
+    fontSize: "100%",
+    letterSpacing: "0.6px",
+    textAlign: "left",
   },
 }));
 
@@ -39,48 +45,120 @@ const Home = () => {
   return (
     <div>
       <Nav />
+      <div className="home-header">
+        <h1>Home</h1>
+      </div>
       <div className={classes.root}>
         <Grid container>
           <Grid item md>
             <Paper className={classes.paper}>
-              <Share style={{ fontSize: 80 }} />
-              <h3 className={classes.paperh3}>Share your handicraft</h3>
+              {/* <Share style={{ fontSize: 80 }} /> */}
+              <img
+                src={img1}
+                width="100%"
+                height="auto"
+                style={{ maxWidth: "300px", minHeight: "300px" }}
+              ></img>
+              <h3 className={classes.paperh3}>Share your craft</h3>
               <p className={classes.paperp}>
-                Some more text about Craftical Some more text about Some more
-                text about Craftical Some more text about Craftical Some more
-                text about Craftical Some more text about Craftical MAYbe some
-                icons and small pciture anything more interactive
+                &#8618;Craftical allows users to share their work, keep a record
+                of it and to discover new handicrafts.
+                <br />
+                &#8618;Explore many crafts made from people like you, with a
+                variety of categories and so much more!
               </p>
             </Paper>
           </Grid>
           <Grid item md>
             <Paper className={classes.paper}>
-              <CloudQueue style={{ fontSize: 80 }} />
-              <h3 className={classes.paperh3}>Keep a record of it!</h3>
+              {/* <CloudQueue style={{ fontSize: 80 }} /> */}
+              <img
+                src={img2}
+                width="100%"
+                height="auto"
+                style={{ maxWidth: "300px", minHeight: "300px" }}
+              ></img>
+              <h3 className={classes.paperh3}>Discover new people</h3>
               <p className={classes.paperp}>
-                Here you can find all sorts of items! Here you can find all
-                sorts of items! Here you can find all sorts of items! Here you
-                can find all sorts of items! Here you can find all sorts of
-                items! Here you can find all sorts of items! same here some more
-                icons and such
+                &#8618;Whatever your skills and craftings are, there are many
+                people to connect within the platfrom.
+                <br />
+                &#8618;Find out others with-in your area; support, meet and
+                share moments.
               </p>
             </Paper>
           </Grid>
         </Grid>
       </div>
-      <div className="home-header">
-        <h1>Homepage</h1>
-      </div>
       <div className="carousel-container">
-        <Carousel name="Popular Items" />
+        <Carousel name="Popular Work" />
       </div>
-      <div className="carousel-container">
-        <Carousel name="Popular Categories" />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h2 style={{ fontFamily: '"Fredericka the Great", cursive' }}>
+          Top Categories
+        </h2>
       </div>
-      <div className="carousel-container">
-        <Carousel name="Popular Users" />
+      <div className="home-top-categories">
+        <div>
+          <Grid container>
+            <Grid item md>
+              <TopCategories
+                title="Wood Working"
+                desc="Toys, Coat Racks, Fruit Bowls, Picture Frames..."
+                img="wood"
+              />
+            </Grid>
+            <Grid item md>
+              <TopCategories
+                title="Candles"
+                desc="Palm Wax, Lavender, Paraffin Wax, Liquid Wax..."
+                img="candle"
+              />
+            </Grid>
+            <Grid item md>
+              <TopCategories
+                title="Jewellery"
+                desc="Fashion, Bridal, Antique, Kundan, Bead..."
+                img="jewellery"
+              />
+            </Grid>
+            <Grid item md>
+              <TopCategories
+                title="Painting"
+                desc="Acrylic, Oil, Pencil, Charcoal, Spray..."
+                img="paint"
+              />
+            </Grid>
+          </Grid>
+        </div>
       </div>
-      <div className="home-container"></div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1 style={{ fontFamily: '"Fredericka the Great", cursive' }}>
+          Crafted Items
+        </h1>
+      </div>
+      <div className="home-items">
+        <div>
+          <Grid container>
+            <CraftedItems />
+            <CraftedItems />
+            <CraftedItems />
+            <CraftedItems />
+          </Grid>
+        </div>
+      </div>
       <Footer />
     </div>
   );

@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     backgroundColor: "#fff",
     fontSize: "200%",
+    fontFamily: '"Fredericka the Great", cursive',
   },
   img: {
     height: 255,

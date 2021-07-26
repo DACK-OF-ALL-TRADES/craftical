@@ -57,7 +57,7 @@ const Footer = () => {
                 <Link to="/#">Clothing</Link>
               </li>
               <li>
-                <Link to="/#">Jewelry and Fashion Accessories</Link>
+                <Link to="/#">Jewellery and Fashion Accessories</Link>
               </li>
               <li>
                 <Link to="/#">Paintings</Link>
@@ -96,7 +96,9 @@ const Footer = () => {
           </li>
         </ul>
         <div className="legal">
-          <p>&copy; 2021 Craftical. All rights reserved.</p>
+          <p>
+            &copy; 2021 <span>Craftical</span>. All rights reserved.
+          </p>
           <div className="legal__links">
             <span>
               Made with <span className="heart">♥</span> from earth.
