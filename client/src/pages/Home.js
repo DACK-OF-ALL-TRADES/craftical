@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import img1 from "../assets/art-transparent.png";
 import img2 from "../assets/fun-transparent.png";
 import CraftedItems from "../components/CraftedItems";
+import Items from "../components/Items";
 //
 //
 
@@ -91,7 +92,7 @@ const Home = () => {
         </Grid>
       </div>
       <div className="carousel-container">
-        <Carousel name="Popular Work" />
+        <Carousel name="Popular Posts" />
       </div>
       <div
         style={{
@@ -146,7 +147,7 @@ const Home = () => {
         }}
       >
         <h1 style={{ fontFamily: '"Fredericka the Great", cursive' }}>
-          Crafted Items
+          All Posts
         </h1>
       </div>
       <div className="home-items">
@@ -159,6 +160,7 @@ const Home = () => {
           </Grid>
         </div>
       </div>
+      {/* <Items /> */}
       <Footer />
     </div>
   );
