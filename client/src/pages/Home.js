@@ -91,9 +91,9 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
-      <div className="carousel-container">
+      {/* <div className="carousel-container">
         <Carousel name="Popular Posts" />
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",
@@ -153,14 +153,13 @@ const Home = () => {
       <div className="home-items">
         <div>
           <Grid container>
+            {/* <CraftedItems />
             <CraftedItems />
             <CraftedItems />
-            <CraftedItems />
-            <CraftedItems />
+            <CraftedItems /> */}
           </Grid>
         </div>
       </div>
-      {/* <Items /> */}
       <Footer />
     </div>
   );
