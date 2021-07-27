@@ -16,9 +16,5 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
-  "dependencies": {
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/icons": "^4.11.2",
-    "node-sass": "^6.0.1"
-  }
+  "dependencies": {}
 }

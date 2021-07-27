@@ -31,3 +31,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_FIRSTNAME = gql`
+  mutation addFirstName($firstNameText: String!) {
+    addFirstName(firstNameText: $firstNameText) {
+      firstName
+    }
+  }
+`;

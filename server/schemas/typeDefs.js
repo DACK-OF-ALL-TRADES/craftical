@@ -15,6 +15,8 @@ const typeDefs = gql`
 
   type Query {
     categories: String
+    user: User
+    me: User
   }
 
   type Mutation {
@@ -25,6 +27,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
     login(email: String!, password: String!): Auth
+    addFirstName: String!
   }
 `;
 

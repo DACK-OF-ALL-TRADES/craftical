@@ -8,3 +8,35 @@ export const QUERY_CATEGORIES = gql`
     }
   }
 `;
+
+export const QUERY_USER = gql`
+  {
+    user {
+      firstName
+      lastName
+      email
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
+`;
+
+export const GET_ME = gql`
+  {
+    me {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
+`;
