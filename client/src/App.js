@@ -7,7 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { StoreProvider } from "./utils/GlobalState";
+import "semantic-ui-css/semantic.min.css";
 
 // Pages
 import Home from "./pages/Home";
@@ -42,18 +42,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
-            <Switch>
-              <Route exact path="/" component={Enter} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/search" component={Search} />
-
-              <Route component={NoMatch} />
-            </Switch>
-          </StoreProvider>
+          <Switch>
+            <Route exact path="/" component={Enter} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/search" component={Search} />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </Router>
     </ApolloProvider>

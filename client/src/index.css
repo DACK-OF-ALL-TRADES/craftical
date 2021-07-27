@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Literata&family=Pacifico&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Literata&family=Pacifico&family=Roboto&display=swap");
 /* root................................................... */
 *,
 *:before,
@@ -24,8 +23,8 @@
   --craft-font: "Pacifico", cursive;
   --craft-font2: "Fredericka the Great", cursive;
   --craft-font3: "Literata", serif;
+  --roboto: "Roboto", sans-serif;
 }
-
 /* *................................................... */
 
 body {
@@ -37,6 +36,62 @@ body {
   background-color: #f8f8f8;
   align-items: start;
   height: 100%;
+}
+
+/* Navbar............................................. */
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--craft);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.152);
+  font-family: var(--roboto);
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: var(--craft-dark);
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logout a {
+  background-color: var(--craft-dark);
+  color: var(--craft-light) !important;
+}
+
+.logout a:hover:not(.active) {
+  background-color: var(--craft-light) !important;
+  color: var(--craft-dark) !important;
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: var(--craft-dark);
+  color: var(--craft-light);
+}
+
+ul.topnav li a.active {
+  background-color: var(--craft);
+  padding: 0 10px;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
 }
 
 /* home................................................... */
@@ -59,85 +114,7 @@ body {
   text-shadow: 2px 2px 0 var(--craft-dark);
 }
 
-.carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-}
-
-.carousel-container * img:hover {
-  filter: brightness(50%);
-}
-
-.home-top-categories,
-.home-top-users,
-.home-items {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* profile................................................... */
-
-.profile-container {
-  margin: 3rem 2rem;
-}
-
-.profile-info-subcontainer {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  padding-right: 5rem;
-}
-
-.create-item-profile-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-}
-
-.profile-header h1 {
-  margin-right: 2rem;
-  padding-top: 5rem;
-}
-
-.profile-header2 h4,
-.profile-header2 p {
-  margin-top: 0.5rem;
-}
-
-.profile-header button {
-  margin-top: 5rem;
-}
-
-.profile-header-fluid {
-  display: flex;
-  margin-top: 1rem;
-}
-
-.profile-header-fluid h4 {
-  margin: 0 2.5rem;
-}
-
-.profile-tabs-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5rem;
-}
-
-.profile-tab-cards {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: center;
-}
 
 /* footer................................................... */
 
@@ -151,6 +128,7 @@ body {
   clear: both;
   width: 100%;
   position: absolute;
+  font-family: var(--roboto);
 }
 
 .footer__logo:hover,
@@ -236,10 +214,6 @@ body {
 .nav__ul a {
   color: #c0c0c0;
 }
-
-/* .nav__ul a:hover {
-  color: #1d2622;
-} */
 
 .nav__ul--extra {
   column-count: 2;

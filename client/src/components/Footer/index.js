@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "../../assets/glogo.png";
-import Github from "@material-ui/icons/GitHub";
-import Mail from "@material-ui/icons/Mail";
-import Twitter from "@material-ui/icons/Twitter";
+import logo from "../../assets/tglogo.png";
 import { Link } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
 
 const Footer = () => {
   return (
@@ -35,17 +33,21 @@ const Footer = () => {
                   target="_blank"
                   href="https://github.com/DACK-OF-ALL-TRADES/craftical"
                 >
-                  <Github fontSize="large" />
+                  <Icon name="github" size="big" style={{ margin: "0.5rem" }} />
                 </a>
               </li>
               <li>
                 <a target="_blank" href="mailto:craftical.platform@gmail.com">
-                  <Mail fontSize="large" />
+                  <Icon name="mail" size="big" style={{ margin: "0.5rem" }} />
                 </a>
               </li>
               <li>
                 <a target="_blank" href="https://twitter.com/ToddKel69978509">
-                  <Twitter fontSize="large" />
+                  <Icon
+                    name="twitter"
+                    size="big"
+                    style={{ margin: "0.5rem" }}
+                  />
                 </a>
               </li>
             </ul>
