@@ -54,8 +54,46 @@ export const UPDATE_LASTNAME = gql`
   }
 `;
 
-// Mutation {
-//   addSchool(name: String!, location: String!, studentCount: Int!): School
-//   # Define the required parameters for updating a class
-//   updateClass(id: ID!, building: String!): Class
-// }
+export const UPDATE_EMAIL = gql`
+  mutation updateEmail($email: String!) {
+    updateEmail(email: $email) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const UPDATE_USERNAME = gql`
+  mutation updateUsername($username: String!) {
+    updateUsername(username: $username) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const UPDATE_CITY = gql`
+  mutation updateCity($city: String!) {
+    updateCity(city: $city) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const UPDATE_COUNTRY = gql`
+  mutation updateCountry($country: String!) {
+    updateCountry(country: $country) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;

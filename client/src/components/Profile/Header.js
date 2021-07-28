@@ -24,8 +24,10 @@ const Header = ({ user }) => {
                 {user.firstName} {user.lastName}
               </h1>
               <small>{user.email}</small>
-              <p>kemaldemirgil</p>
-              <p>Ottawa, ON</p>
+              <p>{user.username}</p>
+              <p>
+                {user.city} {user.country}
+              </p>
               <EditProfileModal />
             </Grid.Column>
           </Grid.Row>

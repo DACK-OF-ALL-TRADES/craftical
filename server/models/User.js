@@ -24,6 +24,21 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  username: {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  city: {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  country: {
+    type: String,
+    required: false,
+    trim: true,
+  },
 });
 
 // set up pre-save middleware to create password

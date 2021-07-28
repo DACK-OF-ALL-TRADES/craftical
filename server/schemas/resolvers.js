@@ -23,6 +23,7 @@ const resolvers = {
     },
     addFirstName: async (parent, { firstName }, context) => {
       if (context.user) {
+        context.user.firstName = firstName;
         console.log(context.user);
         return User.findOneAndUpdate({
           _id: context.user._id,
@@ -37,6 +38,47 @@ const resolvers = {
         return User.findOneAndUpdate({
           _id: context.user._id,
           lastName: lastName,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateEmail: async (parent, { email }, context) => {
+      if (context.user) {
+        context.user.email = email;
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          email: email,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateUsername: async (parent, { username }, context) => {
+      if (context.user) {
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          username: username,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateCity: async (parent, { city }, context) => {
+      if (context.user) {
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          city: city,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateCountry: async (parent, { country }, context) => {
+      if (context.user) {
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          country: country,
         });
       }
       throw new AuthenticationError("You need to be logged in!");

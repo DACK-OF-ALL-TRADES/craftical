@@ -127,7 +127,7 @@ ul.topnav li.right {
   border-top: 1px solid #e5e5e5;
   clear: both;
   width: 100%;
-  /*position: absolute;*/
+  position: absolute;
   font-family: var(--roboto);
 }
 

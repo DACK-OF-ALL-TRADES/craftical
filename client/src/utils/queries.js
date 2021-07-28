@@ -15,6 +15,9 @@ export const QUERY_USER = gql`
       firstName
       lastName
       email
+      username
+      city
+      country
     }
   }
 `;
@@ -26,6 +29,9 @@ export const GET_ME = gql`
       firstName
       lastName
       email
+      username
+      city
+      country
     }
   }
 `;
