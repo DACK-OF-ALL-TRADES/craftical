@@ -18,6 +18,9 @@
     .content {
       display: flex;
       flex-direction: column;
+      border-style: solid;
+      border-radius: 15px;
+      border-color: green;
   
       .image {
         width: 20em;
@@ -77,7 +80,8 @@
       }
     }
   
-    //.footer {
-    //  margin-top: 3em;
-    //}
+    .footer {
+     margin-top: 3em;
+     background-color: white;
+    }
 }
