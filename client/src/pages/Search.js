@@ -1,13 +1,15 @@
 import React from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-
+import { Container } from "semantic-ui-react";
+ import SearchBody from '../components/Search/search-body';
 const Search = () => {
   return (
     <div>
       <Nav />
-      Search Page
-      <div className="search-container"></div>
+      <Container>
+      <SearchBody />
+      </Container>
       <Footer />
     </div>
   );

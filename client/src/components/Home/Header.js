@@ -28,8 +28,8 @@ const Header = () => {
               <Image src={img2} width="360" height="300" />
               <h3>Discover new people</h3>
               <p>
-                &#8618;Whatever your skills and craftings are, there are many
-                people to connect within the platfrom.
+                &#8618;Whatever your skills and crafts are, there are many
+                people to connect within the platform.
                 <br />
                 &#8618;Find out others with-in your area; support, meet and
                 share moments.
