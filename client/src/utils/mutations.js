@@ -32,10 +32,30 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_FIRSTNAME = gql`
-  mutation addFirstName($firstNameText: String!) {
-    addFirstName(firstNameText: $firstNameText) {
-      firstName
+export const UPDATE_FIRSTNAME = gql`
+  mutation addFirstName($firstName: String!) {
+    addFirstName(firstName: $firstName) {
+      token
+      user {
+        _id
+      }
     }
   }
 `;
+
+export const UPDATE_LASTNAME = gql`
+  mutation updateLastName($lastName: String!) {
+    updateLastName(lastName: $lastName) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+// Mutation {
+//   addSchool(name: String!, location: String!, studentCount: Int!): School
+//   # Define the required parameters for updating a class
+//   updateClass(id: ID!, building: String!): Class
+// }

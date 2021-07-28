@@ -23,12 +23,21 @@ const resolvers = {
     },
     addFirstName: async (parent, { firstName }, context) => {
       if (context.user) {
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { firstName: firstName } }
-        );
-
-        return firstName;
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          firstName: firstName,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateLastName: async (parent, { lastName }, context) => {
+      if (context.user) {
+        console.log(context.user);
+        return User.findOneAndUpdate({
+          _id: context.user._id,
+          lastName: lastName,
+        });
       }
       throw new AuthenticationError("You need to be logged in!");
     },

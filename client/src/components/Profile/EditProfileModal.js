@@ -10,41 +10,81 @@ import {
   Grid,
 } from "semantic-ui-react";
 import pp from "../../assets/profile-pic.jpg";
-import { ADD_FIRSTNAME } from "../../utils/mutations";
-import { GET_ME, QUERY_ME } from "../../utils/queries";
+import { UPDATE_FIRSTNAME, UPDATE_LASTNAME } from "../../utils/mutations";
+import { GET_ME } from "../../utils/queries";
 
 function EditProfileModal() {
   const [open, setOpen] = React.useState(false);
   const [firstNameText, setfirstNameText] = useState("");
+  const [lastNameText, setlastNameText] = useState("");
 
-  const [addFirstName, { error }] = useMutation(ADD_FIRSTNAME, {
+  const [addFirstName] = useMutation(UPDATE_FIRSTNAME, {
     update(cache, { data: { addFirstName } }) {
       try {
         const { me } = cache.readQuery({ query: GET_ME });
-
         cache.writeQuery({
           query: GET_ME,
-          data: { me: [addFirstName, ...me] },
+          data: { me: { addFirstName, ...me } },
         });
       } catch (e) {
         console.error(e);
       }
+
       // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
+      const { me } = cache.readQuery({ query: GET_ME });
       cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, firstName: [...me.firstName, addFirstName] } },
+        query: GET_ME,
+        data: { me: { ...me.firstName, me } },
       });
     },
   });
 
-  const handleSubmit = async () => {
+  const [updateLastName] = useMutation(UPDATE_LASTNAME, {
+    update(cache, { data: { updateLastName } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        cache.writeQuery({
+          query: GET_ME,
+          data: { me: { updateLastName, ...me } },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: GET_ME });
+      cache.writeQuery({
+        query: GET_ME,
+        data: { me: { ...me.lastName, me } },
+      });
+    },
+  });
+
+  const handleFirstNameSubmit = async () => {
     try {
+      console.log("handle submit input ->" + firstNameText);
       const { data } = await addFirstName({
-        firstNameText,
+        variables: {
+          firstName: firstNameText,
+        },
       });
 
       setfirstNameText("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleLastNameSubmit = async () => {
+    try {
+      console.log("handle submit input ->" + lastNameText);
+      const { data } = await updateLastName({
+        variables: {
+          lastName: lastNameText,
+        },
+      });
+
+      setlastNameText("");
     } catch (err) {
       console.log(err);
     }
@@ -55,6 +95,9 @@ function EditProfileModal() {
 
     if (name === "first-name") {
       setfirstNameText(value);
+    }
+    if (name === "last-name") {
+      setlastNameText(value);
     }
   };
 
@@ -71,6 +114,7 @@ function EditProfileModal() {
         <Modal.Description>
           <Image size="medium" src={pp} wrapped />
           <Header>First Name</Header>
+          {/* FIRSTNAME................................. */}
           <Input
             name="first-name"
             type="text"
@@ -80,12 +124,26 @@ function EditProfileModal() {
             action
           >
             <input />
-            <Button type="submit" onClick={handleSubmit}>
+            <Button type="submit" onClick={handleFirstNameSubmit}>
               Save
             </Button>
           </Input>
+          {/* LASTNAME................................. */}
           <Header>Last Name</Header>
-          <Input action="Save" placeholder="Enter last name" />
+          <Input
+            name="last-name"
+            type="text"
+            placeholder="Enter last name"
+            value={lastNameText}
+            onChange={handleChange}
+            action
+          >
+            <input />
+            <Button type="submit" onClick={handleLastNameSubmit}>
+              Save
+            </Button>
+          </Input>
+          {/* EMAIL................................. */}
           <Header>Email Address</Header>
           <Input action="Save" placeholder="Enter email address" />
           <Header>City</Header>

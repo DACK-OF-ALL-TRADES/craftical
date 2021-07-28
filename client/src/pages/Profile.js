@@ -8,7 +8,6 @@ import { GET_ME } from "../utils/queries";
 const Profile = () => {
   const { loading, data } = useQuery(GET_ME);
   const user = data?.me || [];
-  console.log(user);
   return (
     <div>
       <Nav />
