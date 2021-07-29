@@ -34,7 +34,7 @@ function Signup(props) {
 
   return (
     <div className="container">
-      <Link to="/login">Login</Link>
+  
       <div className="content">
 
         <h2 className='header'>Signup</h2>
@@ -64,10 +64,11 @@ function Signup(props) {
                 onChange={handleChange}
               />
             </div>
+            
             <div className="form-group">
               <label htmlFor="email">Email:</label>
               <input
-                placeholder="youremail@test.com"
+                placeholder="email@test.com"
                 name="email"
                 type="email"
                 id="email"
@@ -86,6 +87,7 @@ function Signup(props) {
             </div>
             <div className="footer">
               <button type="submit">Submit</button>
+              <h4>Need to login?<Link to="/login"> Click here</Link></h4>
             </div>
           </div>
         </form>
