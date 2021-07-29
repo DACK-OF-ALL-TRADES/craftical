@@ -1,33 +1,15 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Category, File } = require("../models");
+const { User, Category } = require("../models");
 const { signToken } = require("../utils/auth");
-const { mkdir, createWriteStream } = require("fs");
+const { createWriteStream } = require("fs");
+const path = require("path");
 const shortid = require("shortid");
 const { GraphQLUpload } = require("apollo-server-express");
-
-const storeUpload = async ({ stream, filename, mimetype }) => {
-  const id = shortid.generate();
-  const path = `images/${id}-${filename}`;
-
-  return new Promise((resolve, reject) =>
-    stream
-      .pipe(createWriteStream(path))
-      .on("finish", () => resolve({ id, path, filename, mimetype }))
-      .on("error", reject)
-  );
-};
-
-const processUpload = async (upload) => {
-  const { createReadStream, filename, mimetype } = await upload;
-  const stream = createReadStream();
-  const file = await storeUpload({ stream, filename, mimetype });
-  return file;
-};
-//
 
 const resolvers = {
   Upload: GraphQLUpload,
   Query: {
+    files: () => files,
     categories: async () => {
       return await Category.find();
     },
@@ -64,13 +46,21 @@ const resolvers = {
   },
   Mutation: {
     uploadFile: async (_, { file }) => {
-      mkdir("images", { recursive: true }, (err) => {
-        if (err) throw err;
-      });
+      const { createReadStream, filename } = await file;
+      const id = shortid.generate();
+      const uniqueFileName = `${id}-${filename}`;
 
-      const upload = await processUpload(file);
-      await File.create(upload);
-      return upload;
+      await new Promise((res) =>
+        createReadStream()
+          .pipe(
+            createWriteStream(path.join(__dirname, "../images", uniqueFileName))
+          )
+          .on("close", res)
+      );
+
+      files.push(filename);
+
+      return true;
     },
     addUser: async (parent, args) => {
       const user = await User.create(args);

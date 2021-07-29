@@ -1,8 +1,7 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
-const cors = require("cors");
-
+const { existsSync, mkdirSync } = require("fs");
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
 const db = require("./config/connection");
@@ -14,7 +13,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
-  uploads: false,
 });
 
 server.applyMiddleware({ app });
@@ -22,14 +20,11 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(cors("#"));
-const dir = path.join(process.cwd(), "images");
-app.use("/images", express.static(dir));
+app.use("/images", express.static(path.join(__dirname, "../images")));
 app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 10 }));
 
-// Serve up static assets
-// ..
-// app.use('/images', express.static(path.join(__dirname, '../client/images')));
+existsSync(path.join(__dirname, "../images")) ||
+  mkdirSync(path.join(__dirname, "../images"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -45,3 +40,7 @@ db.once("open", () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
+
+// app.use(cors("*"));
+// const dir = path.join(process.cwd(), "images");
+// app.use("/images", express.static(dir));

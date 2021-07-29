@@ -6,7 +6,12 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon",
-    "seed": "node config/seeds.js"
+    "seed": "node config/seeds.js",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
   },
   "keywords": [],
   "author": "",

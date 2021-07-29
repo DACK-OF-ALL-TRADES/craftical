@@ -27,16 +27,7 @@ const typeDefs = gql`
     item: [Item]
     user: User
     me: User
-    files: [File!]
-  }
-
-  scalar Upload
-
-  type File {
-    id: ID!
-    filename: String!
-    mimetype: String!
-    path: String!
+    files: [String]
   }
 
   type Category {
@@ -73,7 +64,7 @@ const typeDefs = gql`
     updateUsername(username: String!): Auth
     updateCity(city: String!): Auth
     updateCountry(country: String!): Auth
-    uploadFile(file: Upload!): File
+    uploadFile(file: Upload!): Boolean
   }
 `;
 

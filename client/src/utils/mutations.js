@@ -97,14 +97,3 @@ export const UPDATE_COUNTRY = gql`
     }
   }
 `;
-
-export const UPLOAD_IMAGE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      path
-      id
-      filename
-      mimetype
-    }
-  }
-`;
