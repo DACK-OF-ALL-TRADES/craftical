@@ -19,6 +19,7 @@ import {
   UPDATE_COUNTRY,
 } from "../../utils/mutations";
 import { GET_ME } from "../../utils/queries";
+import PhotoUpload from "./PhotoUpload";
 
 function EditProfileModal() {
   const [open, setOpen] = React.useState(false);
@@ -385,6 +386,7 @@ function EditProfileModal() {
           </Input>
           {/* PICTURE................................. */}
           <Header>Profile Picture</Header>
+          <PhotoUpload />
         </Modal.Description>
       </Modal.Content>
     </Modal>

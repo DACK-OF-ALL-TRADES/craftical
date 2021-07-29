@@ -1,11 +1,58 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Category } = require("../models");
+const { User, Category, File } = require("../models");
 const { signToken } = require("../utils/auth");
+const { mkdir, createWriteStream } = require("fs");
+const shortid = require("shortid");
+const { GraphQLUpload } = require("apollo-server-express");
+
+const storeUpload = async ({ stream, filename, mimetype }) => {
+  const id = shortid.generate();
+  const path = `images/${id}-${filename}`;
+
+  return new Promise((resolve, reject) =>
+    stream
+      .pipe(createWriteStream(path))
+      .on("finish", () => resolve({ id, path, filename, mimetype }))
+      .on("error", reject)
+  );
+};
+
+const processUpload = async (upload) => {
+  const { createReadStream, filename, mimetype } = await upload;
+  const stream = createReadStream();
+  const file = await storeUpload({ stream, filename, mimetype });
+  return file;
+};
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     categories: async () => {
       return await Category.find();
+    },
+    subcategory: async () => {
+      return await Subcategory.find({}).populate("category");
+    },
+    getcategory: async (parent, { name }) => {
+      return Category.findOne({ name: name });
+    },
+    getsubcategory: async (parent, { subcategoryname }) => {
+      return Subcategory.findOne({ subcategoryname: subcategoryname });
+    },
+    getuser: async (parent, { lastName }) => {
+      return User.findOne({ lastName: lastName });
+    },
+    getitem: async (parent, { itemid }) => {
+      return Item.findOne({ _id: itemid });
+    },
+    item: async () => {
+      return await Item.find({})
+        .populate("category")
+        .populate("subcategory")
+        .populate("user");
+    },
+    user: async () => {
+      return User.find();
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -15,6 +62,15 @@ const resolvers = {
     },
   },
   Mutation: {
+    uploadFile: async (_, { file }) => {
+      mkdir("images", { recursive: true }, (err) => {
+        if (err) throw err;
+      });
+
+      const upload = await processUpload(file);
+      await File.create(upload);
+      return upload;
+    },
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);

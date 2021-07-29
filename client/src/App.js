@@ -1,13 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import "semantic-ui-css/semantic.min.css";
+import { createUploadLink } from "apollo-upload-client";
 
 // Pages
 import Home from "./pages/Home";
@@ -18,7 +14,7 @@ import Enter from "./pages/Enter";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: "/graphql",
 });
 

@@ -18,10 +18,45 @@ const typeDefs = gql`
   }
 
   type Query {
-    categories: String
+    categories: [Category]
+    subcategory: [Subcategory]
+    getcategory(name: String): Category
+    getsubcategory(subcategoryname: String): Subcategory
+    getuser(lastName: String): User
+    getitem(itemid: ID!): Item
+    item: [Item]
     user: User
     me: User
-    files: [String]
+    files: [File!]
+  }
+
+  scalar Upload
+
+  type File {
+    id: ID!
+    filename: String!
+    mimetype: String!
+    path: String!
+  }
+
+  type Category {
+    _id: ID
+    name: String
+  }
+
+  type Subcategory {
+    _id: ID
+    subcategoryname: String
+    category: Category
+  }
+  type Item {
+    _id: ID
+    name: String
+    description: String
+    status: String
+    category: Category
+    subcategory: Subcategory
+    user: User
   }
 
   type Mutation {
@@ -38,6 +73,7 @@ const typeDefs = gql`
     updateUsername(username: String!): Auth
     updateCity(city: String!): Auth
     updateCountry(country: String!): Auth
+    uploadFile(file: Upload!): File
   }
 `;
 

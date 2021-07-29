@@ -35,3 +35,14 @@ export const GET_ME = gql`
     }
   }
 `;
+
+export const GET_PHOTO = gql`
+  {
+    files {
+      id
+      filename
+      mimetype
+      path
+    }
+  }
+`;
