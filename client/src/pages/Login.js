@@ -33,7 +33,6 @@ function Login(props) {
 
   return (
     <div className="container">
-      <Link to="/signup"> Signup</Link>
       <div className="content">
 
         <h2 className='header'>Login</h2>
@@ -45,7 +44,7 @@ function Login(props) {
             <div className='form-group'>
               <label htmlFor="email">Email:</label>
               <input
-                placeholder="youremail@test.com"
+                placeholder="email@test.com"
                 name="email"
                 type="email"
                 id="email"
@@ -72,6 +71,7 @@ function Login(props) {
 
           <div className="footer">
             <button type="submit">Submit</button>
+            <h4>New to Craftical?<Link to="/signup"> Signup here</Link></h4>
           </div>
         </form>
       </div>
@@ -81,3 +81,4 @@ function Login(props) {
 }
 
 export default Login;
+
