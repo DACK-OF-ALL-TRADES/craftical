@@ -23,6 +23,7 @@ const processUpload = async (upload) => {
   const file = await storeUpload({ stream, filename, mimetype });
   return file;
 };
+//
 
 const resolvers = {
   Upload: GraphQLUpload,
