@@ -39,6 +39,11 @@ const userSchema = new Schema({
     required: false,
     trim: true,
   },
+  profile: {
+    type: String,
+    required: false,
+    trim: true,
+  },
 });
 
 // set up pre-save middleware to create password

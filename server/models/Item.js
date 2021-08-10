@@ -18,18 +18,18 @@ const itemSchema = new Schema({
     trim: true,
   },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
+    type: String,
+    ref: "Category",
   },
   subcategory: {
-    type: Schema.Types.ObjectId,
-    ref: 'Subcategory',
+    type: String,
+    ref: "Subcategory",
   },
   user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  }, 
-  });
+    type: String,
+    ref: "User",
+  },
+});
 
 const Item = mongoose.model("Item", itemSchema);
 

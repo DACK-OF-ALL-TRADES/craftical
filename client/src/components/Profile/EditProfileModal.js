@@ -22,7 +22,7 @@ import { GET_ME } from "../../utils/queries";
 import { Files } from "../PhotoUpload/Files";
 import { Upload } from "../PhotoUpload/Upload";
 
-function EditProfileModal() {
+function EditProfileModal({ user }) {
   const [open, setOpen] = React.useState(false);
   const [firstNameText, setfirstNameText] = useState("");
   const [lastNameText, setlastNameText] = useState("");
@@ -275,12 +275,17 @@ function EditProfileModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Edit Profile</Button>}
+      trigger={
+        <Button icon labelPosition="right">
+          Edit Profile
+          <Icon name="edit" />
+        </Button>
+      }
       size="mini"
       style={{ minWidth: "335px" }}
     >
       <Modal.Header>
-        Edit Profile{" "}
+        Edit Profile
         <Button icon style={{ float: "right" }} onClick={() => setOpen(false)}>
           <Icon name="close" />
         </Button>
@@ -288,7 +293,12 @@ function EditProfileModal() {
 
       <Modal.Content image>
         <Modal.Description>
-          <Image size="medium" src={pp} wrapped />
+          <Image
+            size="medium"
+            src="https://i.postimg.cc/sxxqnThp/whiterabbit.jpg"
+            // src={require(`../../images/${user.profile}`).default}
+            wrapped
+          />
           <Header>First Name</Header>
           {/* FIRSTNAME................................. */}
           <Input

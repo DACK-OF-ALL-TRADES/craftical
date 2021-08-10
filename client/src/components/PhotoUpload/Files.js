@@ -8,23 +8,25 @@ export const filesQuery = gql`
 `;
 
 export const Files = () => {
-  const { data, loading } = useQuery(filesQuery);
-  console.log("------->" + data);
-  if (loading) {
-    return <div>loading...</div>;
-  }
+  // const { data, loading } = useQuery(filesQuery);
+  // if (loading) {
+  //   return <div>loading...</div>;
+  // }
 
   return (
     <div>
-      {data &&
-        data.files.map((x) => (
+      {/* {
+        data && data.files && (z
+          // data.files.map((x) => (
           <img
             style={{ width: 200 }}
-            key={x}
-            src={`http://localhost:3001/images/${x}`}
-            alt={x}
+            key={data.files}
+            src={`http://localhost:3001/images/${data.files}`}
+            alt={data.files}
           />
-        ))}
+        )
+        // ))
+      } */}
     </div>
   );
 };

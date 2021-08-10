@@ -33,8 +33,8 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_FIRSTNAME = gql`
-  mutation addFirstName($firstName: String!) {
-    addFirstName(firstName: $firstName) {
+  mutation addFirstName($firstname: String!) {
+    addFirstName(firstname: $firstname) {
       token
       user {
         _id
@@ -90,6 +90,29 @@ export const UPDATE_CITY = gql`
 export const UPDATE_COUNTRY = gql`
   mutation updateCountry($country: String!) {
     updateCountry(country: $country) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const ADD_ITEM = gql`
+  mutation addItem(
+    $name: String!
+    $description: String!
+    $status: String!
+    $category: String!
+    $subcategory: String!
+  ) {
+    addItem(
+      name: $name
+      description: $description
+      status: $status
+      category: $category
+      subcategory: $subcategory
+    ) {
       token
       user {
         _id

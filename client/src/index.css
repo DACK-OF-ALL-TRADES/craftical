@@ -13,7 +13,7 @@
 }
 
 .asd {
-  color: #ff82c7;
+  color: #f7f7f7;
 }
 
 :root {
@@ -26,7 +26,6 @@
   --roboto: "Roboto", sans-serif;
 }
 /* *................................................... */
-/*  */
 body {
   font-family: var(--craft-font3);
   margin: 0;

@@ -10,6 +10,7 @@ const typeDefs = gql`
     username: String
     city: String
     country: String
+    profile: String
   }
 
   type Auth {
@@ -27,7 +28,7 @@ const typeDefs = gql`
     item: [Item]
     user: User
     me: User
-    files: [String]
+    files: String
   }
 
   type Category {
@@ -40,14 +41,15 @@ const typeDefs = gql`
     subcategoryname: String
     category: Category
   }
+
   type Item {
     _id: ID
     name: String
     description: String
     status: String
-    category: Category
-    subcategory: Subcategory
-    user: User
+    category: String
+    subcategory: String
+    user: String
   }
 
   type Mutation {
@@ -56,6 +58,13 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
+    ): Auth
+    addItem(
+      name: String!
+      description: String!
+      status: String!
+      category: String!
+      subcategory: String!
     ): Auth
     login(email: String!, password: String!): Auth
     addFirstName(firstName: String!): Auth

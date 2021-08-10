@@ -18,6 +18,7 @@ export const QUERY_USER = gql`
       username
       city
       country
+      profile
     }
   }
 `;
@@ -32,6 +33,21 @@ export const GET_ME = gql`
       username
       city
       country
+      profile
+    }
+  }
+`;
+
+export const GET_USER_ITEMS = gql`
+  {
+    item {
+      _id
+      name
+      description
+      status
+      category
+      subcategory
+      user
     }
   }
 `;

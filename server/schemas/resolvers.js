@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Category } = require("../models");
+const { User, Category, Item, Subcategory } = require("../models");
 const { signToken } = require("../utils/auth");
 const { createWriteStream } = require("fs");
 const path = require("path");
@@ -29,10 +29,10 @@ const resolvers = {
       return Item.findOne({ _id: itemid });
     },
     item: async () => {
-      return await Item.find({})
-        .populate("category")
-        .populate("subcategory")
-        .populate("user");
+      return await Item.find({});
+      // .populate("category")
+      // .populate("subcategory")
+      // .populate("user");
     },
     user: async () => {
       return User.find();
@@ -45,22 +45,37 @@ const resolvers = {
     },
   },
   Mutation: {
-    uploadFile: async (_, { file }) => {
+    uploadFile: async (_, { file }, context) => {
       const { createReadStream, filename } = await file;
       const id = shortid.generate();
-      const uniqueFileName = `${id}-${filename}`;
+      const uniqueFileName = `${context.user._id}-${filename}`;
+      console.log(context.user);
 
       await new Promise((res) =>
         createReadStream()
           .pipe(
-            createWriteStream(path.join(__dirname, "../images", uniqueFileName))
+            createWriteStream(
+              path.join(__dirname, "../../client/src/images", uniqueFileName)
+            )
           )
           .on("close", res)
       );
-
-      files.push(filename);
+      await User.findOneAndUpdate({
+        _id: context.user._id,
+        profile: uniqueFileName,
+      });
 
       return true;
+    },
+    addItem: async (parent, args, context) => {
+      return Item.create({
+        name: args.name,
+        description: args.description,
+        status: args.status,
+        category: args.category,
+        subcategory: args.subcategory,
+        user: context.user._id,
+      });
     },
     addUser: async (parent, args) => {
       const user = await User.create(args);

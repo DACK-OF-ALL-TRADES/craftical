@@ -4,7 +4,7 @@ import img2 from "../../assets/fun-transparent.png";
 import img3 from "../../assets/post-transparent.png";
 import { Grid, Image, Container } from "semantic-ui-react";
 
-const Header = () => {
+const Head = () => {
   return (
     <div>
       <Container>
@@ -58,4 +58,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Head;
